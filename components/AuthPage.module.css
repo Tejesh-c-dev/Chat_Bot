@@ -1,0 +1,108 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 60% 0%, rgba(198, 93, 46, 0.2) 0%, transparent 46%),
+    radial-gradient(ellipse at 100% 100%, rgba(15, 123, 117, 0.16) 0%, transparent 40%),
+    var(--bg);
+}
+
+.card {
+  width: min(92vw, 420px);
+  padding: 40px 34px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text2);
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: var(--font-body);
+  margin-bottom: 16px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(32, 183, 164, 0.16);
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, var(--accent), #1dc4a3);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.toggle {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text2);
+}
+
+.link {
+  color: var(--accent2);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-family: var(--font-body);
+  padding: 0;
+}
+
+.error {
+  background: rgba(178, 41, 69, 0.15);
+  border: 1px solid rgba(178, 41, 69, 0.45);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #ff9ab0;
+  margin-bottom: 16px;
+}
