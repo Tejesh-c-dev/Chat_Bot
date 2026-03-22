@@ -2,10 +2,17 @@ import jwt from "jsonwebtoken";
 import type { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-const JWT_SECRET = process.env.JWT_SECRET || "secret";
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET?.trim();
+  if (!secret) {
+    throw new Error("JWT_SECRET is not configured");
+  }
+
+  return secret;
+}
 
 export function signToken(userId: string): string {
-  return jwt.sign({ userId }, JWT_SECRET, { expiresIn: "7d" });
+  return jwt.sign({ userId }, getJwtSecret(), { expiresIn: "7d" });
 }
 
 export async function getAuthenticatedUserId(request: NextRequest): Promise<
@@ -26,7 +33,7 @@ export async function getAuthenticatedUserId(request: NextRequest): Promise<
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as { userId: string };
+    const decoded = jwt.verify(token, getJwtSecret()) as { userId: string };
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
       select: { id: true },
@@ -37,7 +44,11 @@ export async function getAuthenticatedUserId(request: NextRequest): Promise<
     }
 
     return { userId: decoded.userId };
-  } catch {
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("JWT_SECRET")) {
+      return { error: "Server auth is not configured", status: 500 };
+    }
+
     return { error: "Invalid token", status: 401 };
   }
 }
