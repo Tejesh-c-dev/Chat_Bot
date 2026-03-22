@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { signToken } from "@/lib/auth";
 
+export const dynamic = "force-dynamic";
+
 type RegisterBody = {
   username?: string;
   email?: string;

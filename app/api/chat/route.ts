@@ -3,6 +3,8 @@ import { generateReply } from "@/lib/ai.service";
 import { createSession, sessionBelongsToUser } from "@/lib/chat.service";
 import { getAuthenticatedUserId } from "@/lib/auth";
 
+export const dynamic = "force-dynamic";
+
 type ChatBody = {
   userId?: string;
   sessionId?: string;

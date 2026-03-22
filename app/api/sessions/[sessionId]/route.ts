@@ -3,6 +3,8 @@ import { getAuthenticatedUserId } from "@/lib/auth";
 import { getMessagesPage } from "@/lib/chat.service";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 function resolveSessionTitle(messages: Array<{ role: string; content: string }>, sessionTitle: string): string {
   if (sessionTitle && sessionTitle !== "New Chat") {
     return sessionTitle;

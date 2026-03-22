@@ -3,6 +3,8 @@ import { generateReply } from "@/lib/ai.service";
 import { getAuthenticatedUserId } from "@/lib/auth";
 import { sessionBelongsToUser } from "@/lib/chat.service";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(
   request: NextRequest,
   { params }: { params: { sessionId: string } }
